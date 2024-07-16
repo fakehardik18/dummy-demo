@@ -16,13 +16,40 @@
             <div>
                 <span class="text-white font-semibold text-xl">Study Arena</span>
             </div>
+            <div class="block md:hidden">
+                <!-- Hamburger menu button -->
+                <button id="toggleMenu" class="text-white focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
             <div class="hidden md:block">
-                <a href="#" class="text-white hover:text-gray-200 px-4 py-2">Book a Tutor</a>
-                <a href="#" class="text-white hover:text-gray-200 px-4 py-2">Become a Tutor</a>
-                <a href="#" class="text-white hover:text-gray-200 px-4 py-2">Chat On Whatsapp</a>
+                <!-- Desktop navigation links -->
+                <a href="#" class="text-white hover:text-gray-200 px-4 py-2">Home</a>
+                <a href="#" class="text-white hover:text-gray-200 px-4 py-2">Courses</a>
+                <a href="#" class="text-white hover:text-gray-200 px-4 py-2">About</a>
+                <a href="#" class="text-white hover:text-gray-200 px-4 py-2">Contact</a>
             </div>
         </div>
+        <!-- Mobile menu (hidden by default) -->
+        <div id="mobileMenu" class="md:hidden hidden bg-blue-500">
+            <a href="#" class="block text-white hover:text-gray-200 px-4 py-2">Home</a>
+            <a href="#" class="block text-white hover:text-gray-200 px-4 py-2">Courses</a>
+            <a href="#" class="block text-white hover:text-gray-200 px-4 py-2">About</a>
+            <a href="#" class="block text-white hover:text-gray-200 px-4 py-2">Contact</a>
+        </div>
     </nav>
+
+    <!-- Script to toggle mobile menu -->
+    <script>
+        document.getElementById('toggleMenu').addEventListener('click', function () {
+            var mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-blue-400 to-blue-600 text-white py-20 px-4 md:px-0">
