@@ -17,13 +17,30 @@
             <div>
                 <span class="text-white font-semibold text-xl">Study Arena</span>
             </div>
-            <div class="hidden md:block">
+            <div class="md:hidden">
+                <button id="nav-toggle" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="nav-content" class="hidden md:flex md:items-center">
                 <a href="#" class="text-white hover:text-gray-200 px-4 py-2">Book a Tutor</a>
                 <a href="#" class="text-white hover:text-gray-200 px-4 py-2">Become a Tutor</a>
                 <a href="#" class="text-white hover:text-gray-200 px-4 py-2">Chat On Whatsapp</a>
             </div>
         </div>
     </nav>
+
+    <script>
+        document.getElementById('nav-toggle').addEventListener('click', function () {
+            var navContent = document.getElementById('nav-content');
+            navContent.classList.toggle('hidden');
+        });
+    </script>
+
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-blue-400 to-blue-600 text-white py-20 px-4 md:px-0">
