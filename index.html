@@ -7,12 +7,44 @@
     <title>Study Arena</title>
     <link rel="icon" type="image/png" href="favi.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Additional CSS for autocomplete styling */
+        #autocomplete-list {
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-top: none;
+            z-index: 1000;
+            width: calc(100% - 2rem);
+            /* Adjusting the width */
+            max-height: 200px;
+            /* Set a max height for the list */
+            overflow-y: auto;
+            /* Enable scrolling */
+            color: #333;
+            /* Set default text color */
+        }
+
+        #autocomplete-list li {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        #autocomplete-list li:hover {
+            background-color: #f0f0f0;
+            /* Change the background color on hover */
+        }
+
+        #autocomplete-list strong {
+            color: #000;
+            /* Highlight matching part */
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100">
-
     <!-- Navbar -->
-    <nav class="bg-blue-500 p-4">
+    <nav class="bg-yellow-500 p-4">
         <div class="container mx-auto flex justify-between items-center">
             <div>
                 <span class="text-white font-semibold text-xl">The Study Arena</span>
@@ -41,15 +73,19 @@
         });
     </script>
 
-
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-400 to-blue-600 text-white py-20 px-4 md:px-0">
+    <section class="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white py-20 px-4 md:px-0 relative">
         <div class="container mx-auto text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to The Study Arena</h1>
             <p class="text-lg md:text-xl mb-8">Your gateway to learning success</p>
-            <form action="#" class="flex justify-center" onsubmit="submitForm(event)">
-                <input id="hireInput" type="text" placeholder="Enter your requirements to hire a tutor"
-                    class="py-3 px-4 rounded-l-md w-full md:w-96 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900">
+            <form id="hireForm" class="flex justify-center" onsubmit="submitForm(event)">
+                <div class="relative w-full md:w-96">
+                    <input id="hireInput" type="text" placeholder="Enter subject to hire a tutor"
+                        class="py-3 px-4 rounded-l-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900">
+                    <ul id="autocomplete-list" class="hidden">
+                        <!-- Suggestions will be dynamically added here -->
+                    </ul>
+                </div>
                 <button type="submit"
                     class="bg-white text-blue-500 hover:bg-blue-200 hover:text-blue-600 py-3 px-6 rounded-r-md font-semibold uppercase shadow-md transition duration-300 ml-2">Hire
                     a Tutor</button>
@@ -59,14 +95,230 @@
 
     <script>
         function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+            window.location.href = 'form.html'; // Redirect to form.html
+        }
+        // Sample subjects for autocomplete
+        var subjects = [
+            // Preparatory
+            "Preparatory Subjects",
+
+            // Kindergarten
+            "KG Subjects",
+
+            // Class I to X
+            "Class I Subjects", "Class II Subjects", "Class III Subjects",
+            "Class IV Subjects", "Class V Subjects", "Class VI Subjects",
+            "Class VII Subjects", "Class VIII Subjects", "Class IX Subjects",
+            "Class X Subjects", "Nursery Subjects",
+
+            // Science
+            "Science up to Class V", "Science for Class VI", "Science for Class VII",
+            "Science for Class VIII", "Science for Class IX", "Science for Class X",
+
+            // Physics
+            "Physics up to Class VIII", "Physics For Class IX", "Physics For Class X",
+            "Physics For Class XI", "Physics For Class XII", "Physics For Graduation",
+            "Physics For Post Graduation", "Physics for IIT", "Physics for AIPMT (NEET)",
+            "Physics for Engineering Entrance", "Physics for Medical Entrance", "Advanced Placement Level",
+
+            // Chemistry
+            "Chemistry Upto Class VIII", "Chemistry For Class IX", "Chemistry For Class X",
+            "Chemistry For Class XI", "Chemistry For Class XII", "Chemistry For Graduation",
+            "Chemistry For Post Graduation", "Chemistry for IIT", "Chemistry for AIPMT (NEET)",
+            "Chemistry for Engineering", "Chemistry for Medical Entrance", "Evolution",
+            "Recombinant DNA Technology", "Physical Chemistry", "Organic Chemistry",
+            "Inorganic Chemistry",
+
+            // Biology
+            "Biology Upto Class VIII", "Biology for Class IX", "Biology for Class X",
+            "Biology for Class XI", "Biology for Class XII", "Biology for Medical Entrance",
+            "Biology for AIPMT (NEET)", "Botany", "Zoology", "Ecology", "Genetics",
+            "Physiology", "Molecular Biology", "Immunology", "Cell Biology", "Microbiology",
+            "Plant Physiology", "Life Science", "Biotechnology", "Animal Physiology",
+            "Informatics", "Biochemistry", "Anatomy", "Ophthalmology",
+
+            // Maths - School Level
+            "Maths up to Class III", "Maths up to Class IV", "Maths for Class V",
+            "Maths for Class VI", "Maths for Class VII", "Maths for Class VIII",
+            "Maths for Class IX", "Maths for Class X", "Maths for Class XI",
+            "Maths for Class XII", "Math for IGCSE", "Vedic Maths",
+
+            // Maths - College Level
+            "Maths for Graduation", "Maths for Post Graduation", "Quantitative Maths",
+            "Maths for CAT", "Maths for Actuarial Science", "Business Maths", "Statistics",
+            "Logical Reasoning", "Maths for IIT", "Maths for BBA Entrance Exam",
+            "Engineering Maths", "Mathematical Physics for BSc and Btech",
+            "Maths for ASSET or NTSE", "Maths for Olympiad", "Maths for SSC",
+            "Maths for Engineering Entrance Exam", "Maths for Bank Exam",
+            "Data Interpretation", "Maths for Btech", "Polytechnic Math",
+            "Linear Algebra", "Calculus", "Applied Math", "Integration or Differentiation",
+            "Operational Research", "Differential Equations", "Real Analysis",
+            "Numerical Method", "Managerial Statistics", "Probability", "Maths For CPT",
+            "Abstract Algebra", "Vector Spaces", "Financial Mathematics",
+            "Maths For CSAT", "Maths For ACT", "Linear Mathematics",
+            "Research Methodology", "Discrete Mathematics", "Geometry",
+            "Linear Programming",
+
+            // Test Papers
+            "NTSE", "ASSET", "Olympiad", "Aryabhatta", "Maths", "SAT",
+
+            // Social Studies
+            "Social Studies up to Class V", "Social Studies for Class VI",
+            "Social Studies for Class VII", "Social Studies for Class VIII",
+            "Social Studies for Class IX", "Social Studies for Class X",
+
+            // History
+            "History for Class XI or XII", "World History", "Indian History",
+            "European History", "History for Graduation", "History for UPSC",
+            "History for IGCSE",
+
+            // Geography
+            "Geography for Class XI or XII", "Geography for Graduation",
+            "Topography", "Cartography",
+
+            // Political Science
+            "Political Science for Class XI or XII", "Political Science for Graduation",
+
+            // Sociology
+            "Sociology for Class XI or XII", "Sociology for Graduation",
+
+            // Home Science
+            "Home Science up to VIII", "Home Science For Class IX or X",
+            "Home Science for Class XI or XII",
+
+            // Philosophy
+            "Philosophy for Class XI or XII", "Philosophy for Graduation",
+
+            // Psychology
+            "Psychology for Class XI or XII", "Psychology for Graduation",
+
+            // Other Subjects
+            "Environmental Studies (EVS) up to Class VIII", "Environmental Studies (EVS) for Class IX or X",
+            "Environmental Studies (EVS) for Class XI or XII", "Mass Communication for Class XI or XII",
+            "Civics", "Mass Communication for Graduation", "Anthropology", "Physical Education",
+            "Human Rights", "Public Administration", "Environmental Management",
+            "Indian Heritage", "Indian Culture", "Pedagogy",
+
+            // English
+            "English up to Class V", "English for Class VI to VIII", "English for Class IX or X",
+            "English for Class XI or XII", "English Speaking", "English for Science Students (Delhi University)",
+            "English for Graduation", "English for Post Graduation", "Creative Writing",
+            "Cursive Writing", "English Reading", "SAT", "English Handwriting",
+            "Verbal Ability", "Phonics", "English Grammar or English Literature",
+            "English for GMAT", "English for Class IX or X", "ICSE",
+            "English for Class XI or XII", "ICSE", "English for ACT", "Diction",
+            "Newspaper Reading", "Essay Writing", "SAT", "Voice Accent Training (USA)",
+            "Voice Accent Training (UK)",
+
+            // Hindi
+            "Hindi up to Class V", "Hindi for Class VI to VIII", "Hindi for Class IX or X",
+            "Hindi for Class XI or XII", "Hindi Speaking", "Hindi for Graduation",
+            "Hindi for Post Graduation", "Hindi for UPSC exams",
+
+            // Foreign Languages
+            "Italian Language", "Portuguese Language", "Greek Language", "Chinese Language",
+            "French Language", "German Language", "Russian Language", "Spanish Language",
+            "Korean Language", "Japanese Language", "Turkish Language", "Dari Language",
+            "Persian Language", "Belarusian",
+
+            // Ancient/Regional Languages
+            "Arabic Language", "Sanskrit Language", "Punjabi Language", "Bengali Language",
+            "Telugu Language", "Tamil Language", "Urdu Language", "Malayalam", "Kannada",
+
+            // B.Tech./B.Sc. Physics
+            "Molecular Physics", "Atomic Physics",
+
+            // Mechanical Engineering
+            "Mechanics", "Thermodynamics", "Quantum Mechanics", "Electromagnetic Theory",
+            "Draftsman", "Automotive", "Fluid Mechanics", "Solid Mechanics", "AutoCAD",
+            "Engineering Drawing", "Dynamics of Machine", "Theory Of Machines",
+            "Refrigeration and Air-Conditioning", "Heat & Mass Transfer",
+            "Industrial Engineering", "Automobile Engineering",
+            "Quality Assurance & Process Planning", "Power Plant Engineering",
+            "Vibrations", "Production Engineering",
+
+            // Civil Engineering
+            "SOM - Strength of Materials", "Production", "Structural Analysis",
+            "Theory of Structure", "Design of Steel Structure", "Design Of Concrete Structure",
+            "Surveying",
+
+            // Electronics/Electrical/Communication
+            "Circuits", "Electronics", "Electronic Devices", "Analog Electronics",
+            "Digital Electronics", "Signals and Systems", "Circuit Analysis",
+            "Analog and Digital Communication", "Electronic Measurements or Instrumentation",
+            "Power System", "VLSI - Very Large Scale Integrated System Design",
+            "HVDC - High-voltage direct current", "Robotics or Automation",
+            "Remote Sensing", "Electrical Machines", "Waves and Oscillation",
+            "Digital Signals and Processing", "Digital Signal Analysis", "Electrical Technology",
+            "Wireless Communication",
+
+            // Other Branches
+            "Optics", "Solid State Physics", "Astrophysics", "Nanotechnology",
+            "Environmental Engineering", "Energy System Engineering", "Mechatronics",
+            "Aircraft Maintenance", "Textile Engineering", "Network Theory", "Control System",
+            "Transmission", "Artificial Intelligence", "Software Engineering",
+
+            // Computer - Programming Languages
+            "Parallel Computing", "Microprocessor", "Core Java", "Advance Java", "C++",
+            "MySQL", "asp.Net", "C#", "VB", "HTML", "CSS", "JavaScript", "Python",
+            "Oracle", "R Programming", "MATLAB", "C", "Perl", "Assembly Language"
+        ];
+
+
+        // Function to handle autocomplete
+        function autocomplete(input, dataList) {
+            input.addEventListener('input', function () {
+                var val = this.value;
+                closeAllLists(); // Close any already open lists
+                if (!val) { return false; }
+
+                var list = document.getElementById('autocomplete-list');
+                list.innerHTML = '';
+
+                dataList.forEach(function (subject) {
+                    if (subject.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        var listItem = document.createElement("li");
+                        listItem.innerHTML = "<strong>" + subject.substr(0, val.length) + "</strong>";
+                        listItem.innerHTML += subject.substr(val.length);
+                        listItem.addEventListener('click', function () {
+                            input.value = subject;
+                            closeAllLists();
+                        });
+                        list.appendChild(listItem);
+                    }
+                });
+
+                if (list.children.length > 0) {
+                    list.classList.remove('hidden');
+                } else {
+                    list.classList.add('hidden');
+                }
+            });
+
+            function closeAllLists(elmnt) {
+                var list = document.getElementById('autocomplete-list');
+                list.innerHTML = '';
+                list.classList.add('hidden');
+            }
+
+            document.addEventListener("click", function (e) {
+                if (e.target != input && e.target != list) {
+                    closeAllLists(e.target);
+                }
+            });
+        }
+
+        function submitForm(event) {
             event.preventDefault(); // Prevent form submission
             let hireInput = document.getElementById('hireInput').value;
-            // Use hireInput value to hire a tutor, e.g., send it to backend or perform an action
             console.log('Hiring tutor with input:', hireInput);
-            // Optionally, you can redirect or perform other actions after form submission
+            // Perform actions with the input value
         }
-    </script>
 
+        // Initialize autocomplete on the input field
+        autocomplete(document.getElementById("hireInput"), subjects);
+    </script>
 
     <!-- Key Points Bar -->
     <div class="bg-white py-8">
@@ -116,24 +368,79 @@
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
                     <div class="w-48 h-48 overflow-hidden rounded-full mb-4">
-                        <img src="global-recognition.png" alt="Achievement" class="object-cover w-full h-full">
+                        <img src="global.png" alt="Achievement" class="object-cover w-full h-full">
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Global Recognition</h3>
-                    <p class="text-gray-600">Students from over 50 countries</p>
+                    <p class="text-gray-600">Recognized worldwide for excellence</p>
                 </div>
             </div>
         </div>
     </section>
 
-
-
     <!-- Footer -->
-    <footer class="bg-blue-500 text-white py-4">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2017-2024 The Study Arena. ALL RIGHTS RESERVED | Made in India (BHARAT)</p>
+    <footer class="bg-yellow-500 py-8">
+        <div class="container mx-auto text-center text-white">
+            <p>&copy; 2024 The Study Arena. All rights reserved.</p>
+
         </div>
     </footer>
 
 </body>
+<script>
+    // Function to handle autocomplete
+    function autocomplete(input, dataList) {
+        // Declare list outside of event listener
+        var list = document.getElementById('autocomplete-list');
+
+        input.addEventListener('input', function () {
+            var val = this.value;
+            closeAllLists(); // Close any already open lists
+            if (!val) { return false; }
+
+            list.innerHTML = '';
+
+            dataList.forEach(function (subject) {
+                if (subject.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                    var listItem = document.createElement("li");
+                    listItem.innerHTML = "<strong>" + subject.substr(0, val.length) + "</strong>";
+                    listItem.innerHTML += subject.substr(val.length);
+                    listItem.addEventListener('click', function () {
+                        input.value = subject;
+                        closeAllLists();
+                    });
+                    list.appendChild(listItem);
+                }
+            });
+
+            if (list.children.length > 0) {
+                list.classList.remove('hidden');
+            } else {
+                list.classList.add('hidden');
+            }
+        });
+
+        function closeAllLists(elmnt) {
+            list.innerHTML = '';
+            list.classList.add('hidden');
+        }
+
+        document.addEventListener("click", function (e) {
+            if (e.target != input && e.target != list) {
+                closeAllLists();
+            }
+        });
+    }
+
+    function submitForm(event) {
+        event.preventDefault(); // Prevent form submission
+        let hireInput = document.getElementById('hireInput').value;
+        console.log('Hiring tutor with input:', hireInput);
+        // Perform actions with the input value
+        window.location.href = 'form.html'; // Redirect to form.html
+    }
+
+    // Initialize autocomplete on the input field
+    autocomplete(document.getElementById("hireInput"), subjects);
+</script>
 
 </html>
