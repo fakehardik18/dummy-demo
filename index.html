@@ -1,446 +1,230 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheStudyArena</title>
-    <link rel="icon" type="image/png" href="favi.png">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* Additional CSS for autocomplete styling */
-        #autocomplete-list {
-            position: absolute;
-            background-color: white;
-            border: 1px solid #ccc;
-            border-top: none;
-            z-index: 1000;
-            width: calc(100% - 2rem);
-            /* Adjusting the width */
-            max-height: 200px;
-            /* Set a max height for the list */
-            overflow-y: auto;
-            /* Enable scrolling */
-            color: #333;
-            /* Set default text color */
-        }
-
-        #autocomplete-list li {
-            padding: 8px;
-            cursor: pointer;
-        }
-
-        #autocomplete-list li:hover {
-            background-color: #f0f0f0;
-            /* Change the background color on hover */
-        }
-
-        #autocomplete-list strong {
-            color: #000;
-            /* Highlight matching part */
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>The Study Arena</title>
 </head>
 
-<body class="bg-gray-100">
-    <!-- Navbar -->
-    <nav class="bg-yellow-500 p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <div>
-                <span class="text-white font-semibold text-xl">The Study Arena</span>
+<body>
+    <header class="text-gray-600 body-font bg-yellow-400">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl">The Study Arena</span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a href="https://example.com" class="mr-5 hover:text-gray-900">Hire a Tutor</a>
+                <a href="https://example.com" class="mr-5 hover:text-gray-900">Become a Tutor</a>
+            </nav>
+            <button
+                class="inline-flex items-center bg-green-500 border-0 py-1 px-3 focus:outline-none hover:bg-green-300 rounded text-base mt-4 md:mt-0">Message
+                On WhatsApp
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+    <section class="text-gray-600 body-font">
+        <div class="container mx-auto flex px-5 py-16 md:flex-row flex-col items-center">
+            <div
+                class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Your Gateway to Personalized
+                    Tutoring & Academic Success</h1>
+                <p class="mb-8 leading-relaxed">The Study Arena is a comprehensive platform connecting students with
+                    qualified tutors, offering personalized learning experiences across various subjects and educational
+                    levels, ensuring academic success and growth for every student.</p>
+                <div class="flex justify-center items-center">
+                    <input type="text" placeholder="Start Typing.."
+                        class="text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none rounded text-lg mr-4">
+                    <button
+                        class="inline-flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded text-lg">Submit</button>
+                </div>
             </div>
-            <div class="md:hidden">
-                <button id="nav-toggle" class="text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path>
+            <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+                <img class="object-cover object-center rounded" alt="hero" src="logo.jpg">
+            </div>
+        </div>
+
+    </section>
+    <section class="text-gray-600 body-font">
+        <h1 class="text-center text-3xl text-black">How Does It Work?</h1>
+        <div class="container px-5 py-10 mx-auto flex flex-wrap">
+            <div class="flex relative pt-10 pb-16 sm:items-center md:w-2/3 mx-auto">
+                <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+                    <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                </div>
+                <div
+                    class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-yellow-500 text-white relative z-10 title-font font-medium text-sm">
+                    1</div>
+                <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                    <div
+                        class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                        <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">Fill Out The Form</h2>
+                        <p class="leading-relaxed">Provide your details and learning preferences in the registration
+                            form</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex relative pb-16 sm:items-center md:w-2/3 mx-auto">
+                <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+                    <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                </div>
+                <div
+                    class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-yellow-500 text-white relative z-10 title-font font-medium text-sm">
+                    2</div>
+                <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                    <div
+                        class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                        <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">How It Works</h2>
+                        <p class="leading-relaxed">Choose your ideal tutor based on expertise and availability.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex relative pb-16 sm:items-center md:w-2/3 mx-auto">
+                <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+                    <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                </div>
+                <div
+                    class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-yellow-500 text-white relative z-10 title-font font-medium text-sm">
+                    3</div>
+                <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                    <div
+                        class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+                            <circle cx="12" cy="5" r="3"></circle>
+                            <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                        <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">Submit the Form</h2>
+                        <p class="leading-relaxed">Confirm and submit the form to match with a tutor.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
+                <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+                    <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                </div>
+                <div
+                    class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-yellow-500 text-white relative z-10 title-font font-medium text-sm">
+                    4</div>
+                <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                    <div
+                        class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+                            <path d="M21 12v-2a4 4 0 00-3-3.87"></path>
+                            <path d="M12 7V3"></path>
+                            <path d="M12 7V3"></path>
+                            <path d="M12 22v-5"></path>
+                            <path d="M5 10H4a2 2 0 00-2 2v0a2 2 0 002 2h1"></path>
+                            <path d="M12 22v-5"></path>
+                            <path d="M5 10H4a2 2 0 00-2 2v0a2 2 0 002 2h1"></path>
+                            <path d="M19 10h1a2 2 0 012 2v0a2 2 0 01-2 2h-1"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                        <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">Start Learning</h2>
+                        <p class="leading-relaxed">Begin your personalized learning journey with your chosen tutor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+            <h1 class="text-center text-3xl text-black">Statistics</h1>
+            <div class="flex flex-wrap -m-4 text-center py-6">
+                <div class="p-4 sm:w-1/4 w-1/2">
+                    <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">-</h2>
+                    <p class="leading-relaxed">Users</p>
+                </div>
+                <div class="p-4 sm:w-1/4 w-1/2">
+                    <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">-</h2>
+                    <p class="leading-relaxed">Tutors</p>
+                </div>
+                <div class="p-4 sm:w-1/4 w-1/2">
+                    <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">-</h2>
+                    <p class="leading-relaxed">Cities</p>
+                </div>
+                <div class="p-4 sm:w-1/4 w-1/2">
+                    <h2 class="title-font font-medium sm:text-4xl text-3xl text-gray-900">-</h2>
+                    <p class="leading-relaxed">Enquires</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="text-gray-600 body-font bg-yellow-400">
+        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl">The Study Arena</span>
+            </a>
+            <p class="text-sm text-gray-500 sm:ml-8 sm:pl-8 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">©
+                2024 The Study Arena — <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1"
+                    rel="noopener noreferrer" target="_blank">@thestudyarena</a>
+            </p>
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+                <a class="text-gray-500">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M18 2h-3a4 4 0 00-4 4v3H7v4h4v8h4v-8h4l1-4h-5V6a1 1 0 011-1h3z"></path>
                     </svg>
-                </button>
-            </div>
-            <div id="nav-content" class="hidden md:flex md:items-center">
-                <a href="#" class="text-white hover:text-gray-200 px-4 py-2">Book a Tutor</a>
-                <a href="#" class="text-white hover:text-gray-200 px-4 py-2">Become a Tutor</a>
-                <a href="#" class="text-white hover:text-gray-200 px-4 py-2">Chat On Whatsapp</a>
-            </div>
-        </div>
-    </nav>
-
-    <script>
-        document.getElementById('nav-toggle').addEventListener('click', function () {
-            var navContent = document.getElementById('nav-content');
-            navContent.classList.toggle('hidden');
-        });
-    </script>
-
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white py-20 px-4 md:px-0 relative">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to The Study Arena</h1>
-            <p class="text-lg md:text-xl mb-8">Your gateway to learning success</p>
-            <form id="hireForm" class="flex justify-center" onsubmit="submitForm(event)">
-                <div class="relative w-full md:w-96">
-                    <input id="hireInput" type="text" placeholder="Enter subject to hire a tutor"
-                        class="py-3 px-4 rounded-l-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900">
-                    <ul id="autocomplete-list" class="hidden">
-                        <!-- Suggestions will be dynamically added here -->
-                    </ul>
-                </div>
-                <button type="submit"
-                    class="bg-white text-blue-500 hover:bg-blue-200 hover:text-blue-600 py-3 px-6 rounded-r-md font-semibold uppercase shadow-md transition duration-300 ml-2">Hire
-                    a Tutor</button>
-            </form>
-        </div>
-    </section>
-
-    <script>
-        function submitForm(event) {
-            event.preventDefault(); // Prevent the default form submission
-            window.location.href = 'form.html'; // Redirect to form.html
-        }
-        // Sample subjects for autocomplete
-        var subjects = [
-            // Preparatory
-            "Preparatory Subjects",
-
-            // Kindergarten
-            "KG Subjects",
-
-            // Class I to X
-            "Class I Subjects", "Class II Subjects", "Class III Subjects",
-            "Class IV Subjects", "Class V Subjects", "Class VI Subjects",
-            "Class VII Subjects", "Class VIII Subjects", "Class IX Subjects",
-            "Class X Subjects", "Nursery Subjects",
-
-            // Science
-            "Science up to Class V", "Science for Class VI", "Science for Class VII",
-            "Science for Class VIII", "Science for Class IX", "Science for Class X",
-
-            // Physics
-            "Physics up to Class VIII", "Physics For Class IX", "Physics For Class X",
-            "Physics For Class XI", "Physics For Class XII", "Physics For Graduation",
-            "Physics For Post Graduation", "Physics for IIT", "Physics for AIPMT (NEET)",
-            "Physics for Engineering Entrance", "Physics for Medical Entrance", "Advanced Placement Level",
-
-            // Chemistry
-            "Chemistry Upto Class VIII", "Chemistry For Class IX", "Chemistry For Class X",
-            "Chemistry For Class XI", "Chemistry For Class XII", "Chemistry For Graduation",
-            "Chemistry For Post Graduation", "Chemistry for IIT", "Chemistry for AIPMT (NEET)",
-            "Chemistry for Engineering", "Chemistry for Medical Entrance", "Evolution",
-            "Recombinant DNA Technology", "Physical Chemistry", "Organic Chemistry",
-            "Inorganic Chemistry",
-
-            // Biology
-            "Biology Upto Class VIII", "Biology for Class IX", "Biology for Class X",
-            "Biology for Class XI", "Biology for Class XII", "Biology for Medical Entrance",
-            "Biology for AIPMT (NEET)", "Botany", "Zoology", "Ecology", "Genetics",
-            "Physiology", "Molecular Biology", "Immunology", "Cell Biology", "Microbiology",
-            "Plant Physiology", "Life Science", "Biotechnology", "Animal Physiology",
-            "Informatics", "Biochemistry", "Anatomy", "Ophthalmology",
-
-            // Maths - School Level
-            "Maths up to Class III", "Maths up to Class IV", "Maths for Class V",
-            "Maths for Class VI", "Maths for Class VII", "Maths for Class VIII",
-            "Maths for Class IX", "Maths for Class X", "Maths for Class XI",
-            "Maths for Class XII", "Math for IGCSE", "Vedic Maths",
-
-            // Maths - College Level
-            "Maths for Graduation", "Maths for Post Graduation", "Quantitative Maths",
-            "Maths for CAT", "Maths for Actuarial Science", "Business Maths", "Statistics",
-            "Logical Reasoning", "Maths for IIT", "Maths for BBA Entrance Exam",
-            "Engineering Maths", "Mathematical Physics for BSc and Btech",
-            "Maths for ASSET or NTSE", "Maths for Olympiad", "Maths for SSC",
-            "Maths for Engineering Entrance Exam", "Maths for Bank Exam",
-            "Data Interpretation", "Maths for Btech", "Polytechnic Math",
-            "Linear Algebra", "Calculus", "Applied Math", "Integration or Differentiation",
-            "Operational Research", "Differential Equations", "Real Analysis",
-            "Numerical Method", "Managerial Statistics", "Probability", "Maths For CPT",
-            "Abstract Algebra", "Vector Spaces", "Financial Mathematics",
-            "Maths For CSAT", "Maths For ACT", "Linear Mathematics",
-            "Research Methodology", "Discrete Mathematics", "Geometry",
-            "Linear Programming",
-
-            // Test Papers
-            "NTSE", "ASSET", "Olympiad", "Aryabhatta", "Maths", "SAT",
-
-            // Social Studies
-            "Social Studies up to Class V", "Social Studies for Class VI",
-            "Social Studies for Class VII", "Social Studies for Class VIII",
-            "Social Studies for Class IX", "Social Studies for Class X",
-
-            // History
-            "History for Class XI or XII", "World History", "Indian History",
-            "European History", "History for Graduation", "History for UPSC",
-            "History for IGCSE",
-
-            // Geography
-            "Geography for Class XI or XII", "Geography for Graduation",
-            "Topography", "Cartography",
-
-            // Political Science
-            "Political Science for Class XI or XII", "Political Science for Graduation",
-
-            // Sociology
-            "Sociology for Class XI or XII", "Sociology for Graduation",
-
-            // Home Science
-            "Home Science up to VIII", "Home Science For Class IX or X",
-            "Home Science for Class XI or XII",
-
-            // Philosophy
-            "Philosophy for Class XI or XII", "Philosophy for Graduation",
-
-            // Psychology
-            "Psychology for Class XI or XII", "Psychology for Graduation",
-
-            // Other Subjects
-            "Environmental Studies (EVS) up to Class VIII", "Environmental Studies (EVS) for Class IX or X",
-            "Environmental Studies (EVS) for Class XI or XII", "Mass Communication for Class XI or XII",
-            "Civics", "Mass Communication for Graduation", "Anthropology", "Physical Education",
-            "Human Rights", "Public Administration", "Environmental Management",
-            "Indian Heritage", "Indian Culture", "Pedagogy",
-
-            // English
-            "English up to Class V", "English for Class VI to VIII", "English for Class IX or X",
-            "English for Class XI or XII", "English Speaking", "English for Science Students (Delhi University)",
-            "English for Graduation", "English for Post Graduation", "Creative Writing",
-            "Cursive Writing", "English Reading", "SAT", "English Handwriting",
-            "Verbal Ability", "Phonics", "English Grammar or English Literature",
-            "English for GMAT", "English for Class IX or X", "ICSE",
-            "English for Class XI or XII", "ICSE", "English for ACT", "Diction",
-            "Newspaper Reading", "Essay Writing", "SAT", "Voice Accent Training (USA)",
-            "Voice Accent Training (UK)",
-
-            // Hindi
-            "Hindi up to Class V", "Hindi for Class VI to VIII", "Hindi for Class IX or X",
-            "Hindi for Class XI or XII", "Hindi Speaking", "Hindi for Graduation",
-            "Hindi for Post Graduation", "Hindi for UPSC exams",
-
-            // Foreign Languages
-            "Italian Language", "Portuguese Language", "Greek Language", "Chinese Language",
-            "French Language", "German Language", "Russian Language", "Spanish Language",
-            "Korean Language", "Japanese Language", "Turkish Language", "Dari Language",
-            "Persian Language", "Belarusian",
-
-            // Ancient/Regional Languages
-            "Arabic Language", "Sanskrit Language", "Punjabi Language", "Bengali Language",
-            "Telugu Language", "Tamil Language", "Urdu Language", "Malayalam", "Kannada",
-
-            // B.Tech./B.Sc. Physics
-            "Molecular Physics", "Atomic Physics",
-
-            // Mechanical Engineering
-            "Mechanics", "Thermodynamics", "Quantum Mechanics", "Electromagnetic Theory",
-            "Draftsman", "Automotive", "Fluid Mechanics", "Solid Mechanics", "AutoCAD",
-            "Engineering Drawing", "Dynamics of Machine", "Theory Of Machines",
-            "Refrigeration and Air-Conditioning", "Heat & Mass Transfer",
-            "Industrial Engineering", "Automobile Engineering",
-            "Quality Assurance & Process Planning", "Power Plant Engineering",
-            "Vibrations", "Production Engineering",
-
-            // Civil Engineering
-            "SOM - Strength of Materials", "Production", "Structural Analysis",
-            "Theory of Structure", "Design of Steel Structure", "Design Of Concrete Structure",
-            "Surveying",
-
-            // Electronics/Electrical/Communication
-            "Circuits", "Electronics", "Electronic Devices", "Analog Electronics",
-            "Digital Electronics", "Signals and Systems", "Circuit Analysis",
-            "Analog and Digital Communication", "Electronic Measurements or Instrumentation",
-            "Power System", "VLSI - Very Large Scale Integrated System Design",
-            "HVDC - High-voltage direct current", "Robotics or Automation",
-            "Remote Sensing", "Electrical Machines", "Waves and Oscillation",
-            "Digital Signals and Processing", "Digital Signal Analysis", "Electrical Technology",
-            "Wireless Communication",
-
-            // Other Branches
-            "Optics", "Solid State Physics", "Astrophysics", "Nanotechnology",
-            "Environmental Engineering", "Energy System Engineering", "Mechatronics",
-            "Aircraft Maintenance", "Textile Engineering", "Network Theory", "Control System",
-            "Transmission", "Artificial Intelligence", "Software Engineering",
-
-            // Computer - Programming Languages
-            "Parallel Computing", "Microprocessor", "Core Java", "Advance Java", "C++",
-            "MySQL", "asp.Net", "C#", "VB", "HTML", "CSS", "JavaScript", "Python",
-            "Oracle", "R Programming", "MATLAB", "C", "Perl", "Assembly Language"
-        ];
-
-
-        // Function to handle autocomplete
-        function autocomplete(input, dataList) {
-            input.addEventListener('input', function () {
-                var val = this.value;
-                closeAllLists(); // Close any already open lists
-                if (!val) { return false; }
-
-                var list = document.getElementById('autocomplete-list');
-                list.innerHTML = '';
-
-                dataList.forEach(function (subject) {
-                    if (subject.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                        var listItem = document.createElement("li");
-                        listItem.innerHTML = "<strong>" + subject.substr(0, val.length) + "</strong>";
-                        listItem.innerHTML += subject.substr(val.length);
-                        listItem.addEventListener('click', function () {
-                            input.value = subject;
-                            closeAllLists();
-                        });
-                        list.appendChild(listItem);
-                    }
-                });
-
-                if (list.children.length > 0) {
-                    list.classList.remove('hidden');
-                } else {
-                    list.classList.add('hidden');
-                }
-            });
-
-            function closeAllLists(elmnt) {
-                var list = document.getElementById('autocomplete-list');
-                list.innerHTML = '';
-                list.classList.add('hidden');
-            }
-
-            document.addEventListener("click", function (e) {
-                if (e.target != input && e.target != list) {
-                    closeAllLists(e.target);
-                }
-            });
-        }
-
-        function submitForm(event) {
-            event.preventDefault(); // Prevent form submission
-            let hireInput = document.getElementById('hireInput').value;
-            console.log('Hiring tutor with input:', hireInput);
-            // Perform actions with the input value
-        }
-
-        // Initialize autocomplete on the input field
-        autocomplete(document.getElementById("hireInput"), subjects);
-    </script>
-
-    <!-- Key Points Bar -->
-    <div class="bg-white py-8">
-        <div class="container mx-auto flex flex-col md:flex-row justify-center items-center">
-            <div class="mx-4 my-2 text-center">
-                <div class="w-24 h-24 mx-auto mb-4">
-                    <img src="tutor.jpg" alt="Image Placeholder" class="w-full h-full object-cover rounded-full">
-                </div>
-                <h2 class="text-xl font-semibold mb-2">Expert Tutors</h2>
-                <p class="text-gray-600">Learn from experienced educators</p>
-            </div>
-            <div class="mx-4 my-2 text-center">
-                <div class="w-24 h-24 mx-auto mb-4">
-                    <img src="learning.png" alt="Image Placeholder" class="w-full h-full object-cover rounded-full">
-                </div>
-                <h2 class="text-xl font-semibold mb-2">Flexible Learning</h2>
-                <p class="text-gray-600">Customize your study schedule</p>
-            </div>
-            <div class="mx-4 my-2 text-center">
-                <div class="w-24 h-24 mx-auto mb-4">
-                    <img src="books.jpg" alt="Image Placeholder" class="w-full h-full object-cover rounded-full">
-                </div>
-                <h2 class="text-xl font-semibold mb-2">Advanced Resources</h2>
-                <p class="text-gray-600">Access to cutting-edge learning materials</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Achievements Section -->
-    <section class="bg-gray-200 py-12">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-semibold mb-4">Our Achievements</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
-                    <div class="w-48 h-48 overflow-hidden rounded-full mb-4">
-                        <img src="courses.png" alt="Achievement" class="object-cover w-full h-full">
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">1000+ Courses</h3>
-                    <p class="text-gray-600">Explore a wide range of subjects</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
-                    <div class="w-48 h-48 overflow-hidden rounded-full mb-4">
-                        <img src="satisfied.png" alt="Achievement" class="object-cover w-full h-full">
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">98% Satisfaction Rate</h3>
-                    <p class="text-gray-600">Highly rated by our learners</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
-                    <div class="w-48 h-48 overflow-hidden rounded-full mb-4">
-                        <img src="global.png" alt="Achievement" class="object-cover w-full h-full">
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Global Recognition</h3>
-                    <p class="text-gray-600">Recognized worldwide for excellence</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-yellow-500 py-8">
-        <div class="container mx-auto text-center text-white">
-            <p>&copy; 2017-2024 The Study Arena ALL RIGHT RESERVED | Made in India(Bharat)</p>
-
+                </a>
+                <a class="ml-3 text-gray-500">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        class="w-5 h-5" viewBox="0 0 24 24">
+                        <path
+                            d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012 8v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+                        </path>
+                    </svg>
+                </a>
+                <a class="ml-3 text-gray-500">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                        <path d="M17.5 6.5h.01"></path>
+                    </svg>
+                </a>
+                <a class="ml-3 text-gray-500">
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path stroke="none" d="M16 8a6 6 0 00-8 0 6 6 0 00-1 7.22L12 22l5-6.78A6 6 0 0016 8z">
+                        </path>
+                    </svg>
+                </a>
+            </span>
         </div>
     </footer>
-
 </body>
-<script>
-    // Function to handle autocomplete
-    function autocomplete(input, dataList) {
-        // Declare list outside of event listener
-        var list = document.getElementById('autocomplete-list');
-
-        input.addEventListener('input', function () {
-            var val = this.value;
-            closeAllLists(); // Close any already open lists
-            if (!val) { return false; }
-
-            list.innerHTML = '';
-
-            dataList.forEach(function (subject) {
-                if (subject.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                    var listItem = document.createElement("li");
-                    listItem.innerHTML = "<strong>" + subject.substr(0, val.length) + "</strong>";
-                    listItem.innerHTML += subject.substr(val.length);
-                    listItem.addEventListener('click', function () {
-                        input.value = subject;
-                        closeAllLists();
-                    });
-                    list.appendChild(listItem);
-                }
-            });
-
-            if (list.children.length > 0) {
-                list.classList.remove('hidden');
-            } else {
-                list.classList.add('hidden');
-            }
-        });
-
-        function closeAllLists(elmnt) {
-            list.innerHTML = '';
-            list.classList.add('hidden');
-        }
-
-        document.addEventListener("click", function (e) {
-            if (e.target != input && e.target != list) {
-                closeAllLists();
-            }
-        });
-    }
-
-    function submitForm(event) {
-        event.preventDefault(); // Prevent form submission
-        let hireInput = document.getElementById('hireInput').value;
-        console.log('Hiring tutor with input:', hireInput);
-        // Perform actions with the input value
-        window.location.href = 'form.html'; // Redirect to form.html
-    }
-
-    // Initialize autocomplete on the input field
-    autocomplete(document.getElementById("hireInput"), subjects);
-</script>
 
 </html>
